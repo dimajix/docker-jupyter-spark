@@ -1,0 +1,9 @@
+{
+  "display_name": "Python 3.5",
+  "language": "python",
+  "argv": [
+    "[% ANACONDA_HOME %]/bin/python3",
+    "-m", "ipykernel",
+    "-f", "{connection_file}"
+  ]
+}

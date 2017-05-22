@@ -1,0 +1,89 @@
+version: "3"
+
+services:
+
+  jupyter-notebook:
+    hostname: jupyter-notebook
+    container_name: jupyter-notebook
+    image: dimajix/jupyter-spark:latest
+    build: 
+      context:  .
+      args:
+        http_proxy: ${http_proxy}
+        https_proxy: ${https_proxy}
+    env_file:
+      - docker-compose.env
+    environment:
+      - http_proxy=${http_proxy}
+      - https_proxy=${https_proxy}
+    external_links:
+      - hadoop-namenode
+      - hadoop-resourcemanager
+      - hadoop-historyserver
+
+  spark-master:
+    hostname: spark-master
+    container_name: jupyter-spark-master
+    image: dimajix/jupyter-spark:latest
+    command: master
+    env_file:
+      - docker-compose.env
+    environment:
+      - http_proxy=${http_proxy}
+      - https_proxy=${https_proxy}
+    expose:
+      - 6066
+      - 7077
+      - 9090
+    ports:
+      - 6066:6066
+      - 7077:7077
+      - 9090:9090
+    external_links:
+      - hadoop-namenode
+      - hadoop-resourcemanager
+      - hadoop-historyserver
+
+  spark-slave-1:
+    hostname: spark-slave-1
+    container_name: jupyter-spark-slave-1
+    image: dimajix/jupyter-spark:latest
+    command: slave
+    env_file:
+      - docker-compose.env
+    environment:
+      - http_proxy=${http_proxy}
+      - https_proxy=${https_proxy}
+    expose:
+      - 9090
+    ports:
+      - 9091:9090
+    external_links:
+      - hadoop-namenode
+      - hadoop-resourcemanager
+      - hadoop-historyserver
+
+  spark-slave-2:
+    hostname: spark-slave-2
+    container_name: jupyter-spark-slave-2
+    image: dimajix/jupyter-spark:latest
+    command: slave
+    env_file:
+      - docker-compose.env
+    environment:
+      - http_proxy=${http_proxy}
+      - https_proxy=${https_proxy}
+    expose:
+      - 9090
+    ports:
+      - 9092:9090
+    external_links:
+      - hadoop-namenode
+      - hadoop-resourcemanager
+      - hadoop-historyserver
+
+networks:
+  default:
+    external:
+      name: dimajix
+
