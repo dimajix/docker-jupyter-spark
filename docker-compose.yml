@@ -6,7 +6,8 @@ services:
     hostname: jupyter-notebook
     container_name: jupyter-notebook
     image: dimajix/jupyter-spark:latest
-    build: 
+    command: notebook
+    build:
       context:  .
       args:
         http_proxy: ${http_proxy}
@@ -16,6 +17,10 @@ services:
     environment:
       - http_proxy=${http_proxy}
       - https_proxy=${https_proxy}
+    expose:
+      - 8888
+    ports:
+      - 8888:8888
     external_links:
       - hadoop-namenode
       - hadoop-resourcemanager

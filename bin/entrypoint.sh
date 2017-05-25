@@ -18,8 +18,8 @@ start_master() {
 
 
 start_notebook() {
-    $SPARK_HOME/sbin/start-master.sh --webui-port ${SPARK_WEBUI_PORT} "$@"
-    check_java
+    mkdir -p /mnt/notebooks
+    $ANACONDA_HOME/bin/jupyter notebook --ip 0.0.0.0 --port $JUPYTER_PORT --notebook-dir /mnt/notebooks --no-browser
 }
 
 
@@ -30,7 +30,7 @@ case "$1" in
     "slave")
         start_slave
         ;;
-    "notebooK")
+    "notebook")
         start_notebook
         ;;
     *)

@@ -24,4 +24,4 @@ COPY conf/jupyter-kernels/ /opt/docker/conf/jupyter-kernels/
 ENV PATH=$PATH:${ANACONDA_HOME}/bin
 
 ENTRYPOINT ["/opt/docker/bin/entrypoint.sh"]
-CMD ["bash"]
+CMD ["notebook"]
