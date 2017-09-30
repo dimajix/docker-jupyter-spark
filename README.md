@@ -8,6 +8,17 @@ The easiest way to run the Jupyter notebook is to run:
 
     docker run -p 8888:8888 dimajix/jupyter-spark
     
+Then when the container is running, point your webbrowser to `http://localhost:8888`, where the Jupyter notebook 
+server is running
+    
+You can also specify your AWS credentials for accessing data inside S3 via environment variables
+    
+    docker run \
+        -p 8888:8888 \
+        -e AWS_ACCESS_KEY_ID=your_aws_key \
+        -e AWS_SECRET_ACCESS_KEY=your_aws_secret \
+        dimajix/jupyter-spark
+    
 
 # Configuration
 
