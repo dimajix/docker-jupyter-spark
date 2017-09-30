@@ -1,9 +1,10 @@
-FROM dimajix/spark:2.1.1
+FROM dimajix/spark:2.2.0
 MAINTAINER k.kupferschmidt@dimajix.de
 
 ARG ANACONDA_VERSION=4.2.0
 
 ENV ANACONDA_HOME=/opt/anaconda3
+ENV SPARK_MASTER=local[*]
 
 USER root
 
