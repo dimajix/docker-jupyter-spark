@@ -19,7 +19,7 @@ start_master() {
 
 start_notebook() {
     mkdir -p ${JUPYTER_DIR}
-    $ANACONDA_HOME/bin/jupyter notebook --ip 0.0.0.0 --port $JUPYTER_PORT --notebook-dir ${JUPYTER_DIR} --no-browser
+    $ANACONDA_HOME/bin/jupyter notebook --ip 0.0.0.0 --port $JUPYTER_PORT --notebook-dir ${JUPYTER_DIR} --no-browser --allow-root
 }
 
 

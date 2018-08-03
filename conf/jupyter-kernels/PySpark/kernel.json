@@ -1,5 +1,5 @@
 {
-  "display_name": "PySpark 2.1 (Python 3.5)",
+  "display_name": "PySpark",
   "language": "python",
   "argv": [
     "[% ANACONDA_HOME %]/bin/python3",
@@ -10,10 +10,8 @@
     "TZ": "UTC",
     "SPARK_MAJOR_VERSION": "${SPARK_MAJOR_VERSION}",
     "SPARK_HOME": "[% SPARK_HOME %]",
-    "PYTHONPATH": "[% SPARK_HOME %]/python/:[% SPARK_HOME %]/python/lib/py4j-0.10.4-src.zip",
+    "PYTHONPATH": "[% SPARK_HOME %]/python/:[% SPARK_HOME %]/python/lib/py4j-0.10.7-src.zip",
     "PYTHONSTARTUP": "[% SPARK_HOME %]/python/pyspark/shell.py",
-    "PYTHONHASHSEED": "0",
-    "SPARK_YARN_USER_ENV": "PYTHONHASHSEED=0",
     "PYSPARK_PYTHON": "[% ANACONDA_HOME %]/bin/python3",
     "PYSPARK_SUBMIT_ARGS": "--master [% SPARK_MASTER %] --driver-memory=[% SPARK_DRIVER_MEMORY %] --executor-cores=[% SPARK_EXECUTOR_CORES %] --executor-memory=[% SPARK_EXECUTOR_MEMORY %] --num-executors=[% SPARK_NUM_EXECUTORS %] pyspark-shell"
   }
